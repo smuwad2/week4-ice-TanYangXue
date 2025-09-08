@@ -18,12 +18,56 @@
         <script>
         
             function validateForm(formName) {
+                var idLength = true;
+                var age = true;
+                var email = true;
+                var password = true;
+                var error_messages = "";
+                var x = document.forms[formName];
+                for (i=0; i<x.length; i++) {
+                    var v = x.elements[i].value;
+                    if (i==0) {
+                        if (v.length > 10) {
+                            idLength = false;
+                        }
+                    }
+                    if (i==1) {
+                        if (v < 10 || v > 40) {
+                            age = false;
+                        }
+                    }
+                    if (i==2) {
+                        if (!v.includes("@")) {
+                            email = false;
+                        }
+                    }
+                    if (i==3) {
+                        if (v == "") {
+                            password = false;
+                        }
+                    }
+                }
                 // Error messages:
                 // Invalid age: Age must be between 10 and 40.
                 // Invalid email: Email must contain the character @.
                 // Empty password: Password must be non-empty.
                 var errorMessages="";
-                
+
+                if (!idLength){
+                    errorMessages += "ID length must be less than 10 characters. \n"
+                }
+                if (!age){
+                    errorMessages += "Age must be between 10 and 40. \n";
+                }
+                if (!email){
+                    errorMessages += "Email must contain the character @. \n"
+                }
+                if (!password){
+                    errorMessages += "Password must be non-empty."
+                }
+                //console.log(idLength, age, email, password)
+                alert(errorMessages);
+
                 
             }
      
