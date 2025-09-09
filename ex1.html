@@ -26,11 +26,13 @@
                 var x = document.forms[formName];
                 for (i=0; i<x.length; i++) {
                     var v = x.elements[i].value;
+                    /*
                     if (i==0) {
                         if (v.length > 10) {
                             idLength = false;
                         }
                     }
+                    */
                     if (i==1) {
                         if (v < 10 || v > 40) {
                             age = false;
@@ -53,9 +55,10 @@
                 // Empty password: Password must be non-empty.
                 var errorMessages="";
 
-                if (!idLength){
+                /*if (!idLength){
                     errorMessages += "ID length must be less than 10 characters. \n"
                 }
+                */
                 if (!age){
                     errorMessages += "Age must be between 10 and 40. \n";
                 }
