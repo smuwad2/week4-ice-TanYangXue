@@ -18,8 +18,8 @@
       <li>Spinach</li>
       <li>Rice</li>
       <li>Birthday Cake</li>
-      <li>Candles</li>\
-   =]
+      <li>Candles</li>
+
 
 
    </ul>
@@ -30,7 +30,7 @@
       const buttonElement = document.getElementsByTagName("button")[0];
       buttonElement.addEventListener("click", addItem);
 
-      for (i=0;i<listNode.length;i++) {
+      for (let i=0;i<listNode.length;i++) {
          const buttonTag = document.createElement("button");
          const text = document.createTextNode("Delete");
          buttonTag.appendChild(text);
@@ -41,17 +41,14 @@
       
 
       function addItem() {
-        const shoppingListInputValue = document.getElementById("innputText").value;
-        document.getElementById("shoppingListEntry").value = "";
+        const shoppingListInputValue = document.getElementById("inputText").value;
+        document.getElementById("inputText").value = "";
         const listItem = document.createElement("li");
         const shoppingListItem = document.createTextNode(shoppingListInputValue);
         listItem.appendChild(shoppingListItem)
         const element = document.getElementById("shoppingList");
         element.appendChild(listItem);
-
-         let listNode = document.getElementsByTagName("li");
          
-         buttonIndex = listNode.length;
          const buttonTag = document.createElement("button");
          const text = document.createTextNode("Delete");
          buttonTag.appendChild(text);
