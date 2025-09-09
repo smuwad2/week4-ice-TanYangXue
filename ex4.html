@@ -9,10 +9,10 @@
    <h1>Shopping List</h1>
    <p>Get it done today</p>
 
-   <input type="text" id="inputText">
-   <!-- add a button here for adding new item -->
+   <input id="shoppingListEntry" type="text" id="inputText">
+   <button>Enter</button>
 
-   <ul>
+   <ul id = "shoppingList">
       <li>Notebook<!--<button>Delete</button></li>-->
       <li>Jello</li>
       <li>Spinach</li>
@@ -22,8 +22,45 @@
    </ul>
 
    <script>
+      let listNode = document.getElementsByTagName("li");
+      
+      const buttonElement = document.getElementsByTagName("button")[0];
+      buttonElement.addEventListener("click", addItem);
 
-      // add code here
+      for (i=0;i<listNode.length;i++) {
+         const buttonTag = document.createElement("button");
+         const text = document.createTextNode("Delete");
+         buttonTag.appendChild(text);
+         buttonTag.addEventListener("click", function () {this.parentElement.remove()}); //this in his scenario refers to the button that calls the function
+         listNode[i].appendChild(buttonTag);
+      }
+
+      
+
+      function addItem() {
+        const shoppingListInputValue = document.getElementById("shoppingListEntry").value;
+        document.getElementById("shoppingListEntry").value = "";
+        const listItem = document.createElement("li");
+        const shoppingListItem = document.createTextNode(shoppingListInputValue);
+        listItem.appendChild(shoppingListItem)
+        const element = document.getElementById("shoppingList");
+        element.appendChild(listItem);
+
+         let listNode = document.getElementsByTagName("li");
+         
+         buttonIndex = listNode.length;
+         const buttonTag = document.createElement("button");
+         const text = document.createTextNode("Delete");
+         buttonTag.appendChild(text);
+         buttonTag.addEventListener("click", () => {listItem.remove()});
+         listNode[listNode.length - 1].appendChild(buttonTag);
+
+      }
+
+      function removeItem(buttonIndex) {
+         
+      }
+      
 
    </script>
 

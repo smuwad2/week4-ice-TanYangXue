@@ -6,25 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Shopping List</h2>
+    <h1>Shopping List</h1>
     <p>Get it done today</p>
     <form name="shoppingListEntry" action="#">
         <input type="text" name="itemName">
-        <button onclick="addItem()">Enter</button>
+        <button>Enter</button>
     </form>
 
     <ul id = "shoppingList">
     </ul>
-<script>
-    function addItem() {
-        const shoppingListInputValue = document.forms["shoppingListEntry"][0].value;
-        document.forms["shoppingListEntry"][0].value = "";
-        const listItem = document.createElement("li");
-        const shoppingListItem = document.createTextNode(shoppingListInputValue);
-        listItem.appendChild(shoppingListItem)
-        const element = document.getElementById("shoppingList");
-        element.appendChild(listItem);
+
+    <script>
+        const btnElem = document.getElementsByTagName("button")[0];
+        btnElem.addEventListener("click", addItem);
+        function addItem() {
+            const shoppingListInputValue = document.forms["shoppingListEntry"][0].value;
+            document.forms["shoppingListEntry"][0].value = "";
+            const listItem = document.createElement("li");
+            const shoppingListItem = document.createTextNode(shoppingListInputValue);
+            listItem.appendChild(shoppingListItem)
+            const element = document.getElementById("shoppingList");
+            element.appendChild(listItem);
     }
-</script>
+    </script>
 </body>
 </html>
